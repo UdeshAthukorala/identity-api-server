@@ -1024,7 +1024,7 @@
         <maven.findbugsplugin.version>3.0.5</maven.findbugsplugin.version>
         <findsecbugs-plugin.version>1.12.0</findsecbugs-plugin.version>
         <maven.checkstyleplugin.excludes>**/gen/**/*</maven.checkstyleplugin.excludes>
-        <identity.event.handler.version>1.9.75</identity.event.handler.version>
+        <identity.event.handler.version>1.9.81-SNAPSHOT</identity.event.handler.version>
         <identity.inbound.oauth2.version>7.0.409</identity.inbound.oauth2.version>
         <identity.inbound.saml2.version>5.11.51</identity.inbound.saml2.version>
         <identity.x509Certificate.validation.version>1.1.19</identity.x509Certificate.validation.version>
@@ -1073,49 +1073,50 @@
     </properties>
 
     <modules>
-        <module>components/org.wso2.carbon.identity.api.server.common</module>
-        <module>components/org.wso2.carbon.identity.api.server.claim.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.identity.governance</module>
-        <module>components/org.wso2.carbon.identity.api.server.permission.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.email.template</module>
-        <module>components/org.wso2.carbon.identity.api.server.application.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.userstore</module>
-        <module>components/org.wso2.carbon.identity.api.server.keystore.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.idp</module>
-        <module>components/org.wso2.carbon.identity.api.server.script.library</module>
-        <module>components/org.wso2.carbon.identity.api.server.oidc.scope.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.configs</module>
-        <module>components/org.wso2.carbon.identity.api.server.tenant.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.cors</module>
+<!--        <module>components/org.wso2.carbon.identity.api.server.common</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.claim.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.identity.governance</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.permission.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.email.template</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.application.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.userstore</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.keystore.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.idp</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.script.library</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.oidc.scope.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.configs</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.tenant.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.cors</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.notification.sender</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.authenticators</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.certificate.validation.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.secret.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.branding.preference.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.input.validation</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.extension.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.admin.advisory.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.idv.provider</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.role.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.idle.account.identification</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.expired.password.identification</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.user.invitation.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.user.sharing.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.api.resource</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.configs</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.organization.selfservice</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.action.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.notification.template</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.rule.metadata</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.flow.execution</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.flow.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.webhook.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.webhook.metadata</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.workflow</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.asynchronous.operation.status.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.vc.template.management</module>-->
+<!--        <module>components/org.wso2.carbon.identity.api.server.credential.management</module>-->
         <module>components/org.wso2.carbon.identity.api.server.notification.sender</module>
-        <module>components/org.wso2.carbon.identity.api.server.authenticators</module>
-        <module>components/org.wso2.carbon.identity.api.server.certificate.validation.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.secret.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.branding.preference.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.input.validation</module>
-        <module>components/org.wso2.carbon.identity.api.server.extension.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.admin.advisory.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.idv.provider</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.role.management</module>
-        <module>components/org.wso2.carbon.identity.api.idle.account.identification</module>
-        <module>components/org.wso2.carbon.identity.api.expired.password.identification</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.user.invitation.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.user.sharing.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.api.resource</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.configs</module>
-        <module>components/org.wso2.carbon.identity.api.server.organization.selfservice</module>
-        <module>components/org.wso2.carbon.identity.api.server.action.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.notification.template</module>
-        <module>components/org.wso2.carbon.identity.api.server.rule.metadata</module>
-        <module>components/org.wso2.carbon.identity.api.server.flow.execution</module>
-        <module>components/org.wso2.carbon.identity.api.server.flow.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.webhook.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.webhook.metadata</module>
-        <module>components/org.wso2.carbon.identity.api.server.workflow</module>
-        <module>components/org.wso2.carbon.identity.api.server.asynchronous.operation.status.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.vc.template.management</module>
-        <module>components/org.wso2.carbon.identity.api.server.credential.management</module>
     </modules>
 
 </project>

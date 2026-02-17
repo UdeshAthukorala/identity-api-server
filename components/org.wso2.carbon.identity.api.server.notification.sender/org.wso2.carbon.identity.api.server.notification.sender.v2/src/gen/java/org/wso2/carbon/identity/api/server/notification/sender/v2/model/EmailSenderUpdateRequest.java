@@ -35,12 +35,83 @@ import javax.xml.bind.annotation.*;
 
 public class EmailSenderUpdateRequest  {
   
+
+@XmlType(name="ProviderEnum")
+@XmlEnum(String.class)
+public enum ProviderEnum {
+
+    @XmlEnumValue("SMTP") SMTP(String.valueOf("SMTP")), @XmlEnumValue("Custom") CUSTOM(String.valueOf("Custom"));
+
+
+    private String value;
+
+    ProviderEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ProviderEnum fromValue(String value) {
+        for (ProviderEnum b : ProviderEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+    private ProviderEnum provider = ProviderEnum.SMTP;
+    private String providerURL;
     private String smtpServerHost;
     private Integer smtpPort;
     private String fromAddress;
     private String authType;
     private List<Properties> properties = null;
 
+
+    /**
+    **/
+    public EmailSenderUpdateRequest provider(ProviderEnum provider) {
+
+        this.provider = provider;
+        return this;
+    }
+    
+    @ApiModelProperty(example = "SMTP", value = "")
+    @JsonProperty("provider")
+    @Valid
+    public ProviderEnum getProvider() {
+        return provider;
+    }
+    public void setProvider(ProviderEnum provider) {
+        this.provider = provider;
+    }
+
+    /**
+    **/
+    public EmailSenderUpdateRequest providerURL(String providerURL) {
+
+        this.providerURL = providerURL;
+        return this;
+    }
+    
+    @ApiModelProperty(value = "")
+    @JsonProperty("providerURL")
+    @Valid
+    public String getProviderURL() {
+        return providerURL;
+    }
+    public void setProviderURL(String providerURL) {
+        this.providerURL = providerURL;
+    }
 
     /**
     **/
@@ -154,7 +225,9 @@ public class EmailSenderUpdateRequest  {
             return false;
         }
         EmailSenderUpdateRequest emailSenderUpdateRequest = (EmailSenderUpdateRequest) o;
-        return Objects.equals(this.smtpServerHost, emailSenderUpdateRequest.smtpServerHost) &&
+        return Objects.equals(this.provider, emailSenderUpdateRequest.provider) &&
+            Objects.equals(this.providerURL, emailSenderUpdateRequest.providerURL) &&
+            Objects.equals(this.smtpServerHost, emailSenderUpdateRequest.smtpServerHost) &&
             Objects.equals(this.smtpPort, emailSenderUpdateRequest.smtpPort) &&
             Objects.equals(this.fromAddress, emailSenderUpdateRequest.fromAddress) &&
             Objects.equals(this.authType, emailSenderUpdateRequest.authType) &&
@@ -163,7 +236,7 @@ public class EmailSenderUpdateRequest  {
 
     @Override
     public int hashCode() {
-        return Objects.hash(smtpServerHost, smtpPort, fromAddress, authType, properties);
+        return Objects.hash(provider, providerURL, smtpServerHost, smtpPort, fromAddress, authType, properties);
     }
 
     @Override
@@ -172,6 +245,8 @@ public class EmailSenderUpdateRequest  {
         StringBuilder sb = new StringBuilder();
         sb.append("class EmailSenderUpdateRequest {\n");
         
+        sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+        sb.append("    providerURL: ").append(toIndentedString(providerURL)).append("\n");
         sb.append("    smtpServerHost: ").append(toIndentedString(smtpServerHost)).append("\n");
         sb.append("    smtpPort: ").append(toIndentedString(smtpPort)).append("\n");
         sb.append("    fromAddress: ").append(toIndentedString(fromAddress)).append("\n");

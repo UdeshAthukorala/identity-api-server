@@ -914,11 +914,87 @@ components:
           type: string
           example: e0fbcfeb-3617-43c4-8dd0-7b7d38e13047
     EmailSenderAdd:
+      description: >
+        Currently SMSTP and CUSTOM(HTTP-based) email providers are supported and based on the email provider going to add the payload needs to be configured.
+        - SMTP: SMTP Based Email Provider.<br>
+          ``{
+              "name": "EmailPublisher",
+              "provider": "SMTP",
+              "fromAddress": "iam@gmail.com",
+              "smtpServerHost": "smtp.gmail.com",
+              "smtpPort": 587,
+              "authType": "BASIC",
+              "properties": [
+                {
+                  "key": "mail.smtp.starttls.enable",
+                  "value": true
+                },
+                {
+                  "key": "userName",
+                  "value": "iam"
+                },
+                {
+                  "key": "password",
+                  "value": "iam123"
+                }
+              ]
+            }
+          }``
+        - CUSTOM: Custom(HTTP Based) Email Provider.<br>
+          ``{
+              "name": "EmailPublisher",
+              "provider": "CUSTOM",
+              "providerURL": "https://webhook.site/3c538899-e860-4a67-bd3f-03d09dd3fffd",
+              "fromAddress": "iam@gmail.com",
+              "authType": "BASIC",
+              "properties": [
+                {
+                  "key": "http.client.method",
+                  "value": "POST"
+                },
+                {
+                  "key": "http.headers",
+                  "value": "X-Version: 1, Authorization: bearer ,Accept: application/json ,Content-Type: application/json"
+                },
+                {
+                  "key": "contentType",
+                  "value": "JSON"
+                },
+                {
+                  "key": "body",
+                  "value": "{\"eventData\":{\"source\":\"{{subject}}\",\"content\":{{body}}},\"messages\":{\"email\":[{\"to\":{\"email\":\"{{send-to}}\"}}]}}"
+                },
+                {
+                  "key": "userName",
+                  "value": "iam"
+                },
+                {
+                  "key": "password",
+                  "value": "iam123"
+                }
+              ]
+          }``
+        - API_KEY: API key secret based authentication.<br>
+          ``{
+            "type": "API_KEY",
+            "properties": {
+              "header": "auth",
+              "value": "123ert45"
+            }
+          }``
       required:
         - fromAddress
       type: object
       properties:
         name:
+          type: string
+        provider:
+          type: string
+          enum:
+            - SMTP
+            - CUSTOM
+          default: SMTP
+        providerURL:
           type: string
         smtpServerHost:
           type: string
@@ -1011,6 +1087,16 @@ components:
         name:
           type: string
           example: EmailPublisher
+        provider:
+          type: string
+          enum:
+            - SMTP
+            - CUSTOM
+          default: SMTP
+          example: SMTP
+        providerURL:
+          type: string
+          example: ""
         smtpServerHost:
           type: string
           example: smtp.gmail.com
@@ -1101,6 +1187,16 @@ components:
         - fromAddress
       type: object
       properties:
+        provider:
+          type: string
+          enum:
+            - SMTP
+            - Custom
+          default: SMTP
+          example: SMTP
+        providerURL:
+          type: string
+          example: ""
         smtpServerHost:
           type: string
           example: smtp.gmail.com
